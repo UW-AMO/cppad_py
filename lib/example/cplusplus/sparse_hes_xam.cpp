@@ -17,7 +17,7 @@ bool sparse_hes_xam(void) {
 	using cppad_py::vec_int;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	using cppad_py::sparse_rc;
 	using cppad_py::sparse_rcv;
 	using cppad_py::sparse_hes_work;
@@ -29,7 +29,7 @@ bool sparse_hes_xam(void) {
 	int n = 3;
 	//
 	// create the independent variables ax
-	vec_double x = vec_double(n);
+	vec_double x(n);
 	for(int i = 0; i < n ; i++) {
 		x[i] = i + 2.0;
 	}
@@ -37,27 +37,27 @@ bool sparse_hes_xam(void) {
 	//
 	// ay[i] = j * ax[j] * ax[i]
 	// where i = mod(j + 1, n)
-	vec_a_double ay = vec_a_double(n);
+	vec_a_double ay(n);
 	for(int j = 0; j < n ; j++) {
 		int i = j+1;
 		if( i >= n  ) {
 			i = i - n;
 		}
-		a_double aj = a_double(j);
+		a_double aj(j);
 		a_double ax_j = ax[j];
 		a_double ax_i = ax[i];
 		ay[i] = aj * ax_j * ax_i;
 	}
 	//
 	// define af corresponding to f(x)
-	a_fun af = a_fun(ax, ay);
+	d_fun f(ax, ay);
 	//
 	// Set select_d (domain) to all true,
 	// initial select_r (range) to all false
 	// initialize r to all zeros
 	vec_bool select_d = vec_bool(n);
 	vec_bool select_r = vec_bool(n);
-	vec_double r = vec_double(n);
+	vec_double r(n);
 	for(int i = 0; i < n; i++) {
 		select_d[i] = true;
 		select_r[i] = false;
@@ -71,7 +71,7 @@ bool sparse_hes_xam(void) {
 	//
 	// sparisty pattern for Hessian
 	sparse_rc pattern = sparse_rc();
-	af.for_hes_sparsity(select_d, select_r, pattern);
+	f.for_hes_sparsity(select_d, select_r, pattern);
 	//
 	// compute all possibly non-zero entries in Hessian
 	// (should only compute lower triangle becuase matrix is symmetric)
@@ -80,7 +80,7 @@ bool sparse_hes_xam(void) {
 	// work space used to save time for multiple calls
 	sparse_hes_work work = cppad_py::sparse_hes_work();
 	//
-	af.sparse_hes(subset, x, r, pattern, work);
+	f.sparse_hes(subset, x, r, pattern, work);
 	//
 	// check that result is sparsity pattern for Hessian of f_0 (x)
 	ok = ok && subset.nnz() == 2 ;

@@ -8,7 +8,7 @@
 # optimize
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_fun_optimize_xam() :
+def fun_optimize_xam() :
 	#
 	import numpy
 	import cppad_py
@@ -40,25 +40,25 @@ def a_fun_optimize_xam() :
 	#
 	# define f(x) = y_0 = csum
 	ay[0] = csum
-	af    = cppad_py.a_fun(ax, ay)
+	f     = cppad_py.d_fun(ax, ay)
 	n_op  = n_op + 1 # speical operator at end
 	#
 	# check number of variables and operators
-	ok = ok and af.size_var() == n_var
-	ok = ok and af.size_op() == n_op
+	ok = ok and f.size_var() == n_var
+	ok = ok and f.size_op() == n_op
 	#
 	# optimize
-	af.optimize()
+	f.optimize()
 	#
 	# number of variables and operators has decreased by two
-	ok = ok and af.size_var() == n_var-2
-	ok = ok and af.size_op() == n_op-2
+	ok = ok and f.size_var() == n_var-2
+	ok = ok and f.size_op() == n_op-2
 	#
 	return( ok  )
 #
 # END SOURCE
 # -----------------------------------------------------------------------------
-# $begin a_fun_optimize_xam.py$$ $newlinech #$$
+# $begin fun_optimize_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -68,7 +68,7 @@ def a_fun_optimize_xam() :
 #	Jacobian
 #	Jacobians
 # $$
-# $section Python: Optimize an a_fun: Example and Test$$
-# $srcfile|lib/example/python/a_fun_optimize_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $section Python: Optimize an d_fun: Example and Test$$
+# $srcfile|lib/example/python/fun_optimize_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

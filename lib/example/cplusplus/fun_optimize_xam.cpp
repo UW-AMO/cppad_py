@@ -11,11 +11,11 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_optimize_xam(void) {
+bool fun_optimize_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
@@ -26,8 +26,8 @@ bool a_fun_optimize_xam(void) {
 	int n_op = 1;  // special operator at beginning
 	//
 	// dimension some vectors
-	vec_double x = vec_double(n_ind);
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_double x(n_ind);
+	vec_a_double ay(n_dep);
 	//
 	// independent variables
 	x[0] = 1.0;
@@ -37,33 +37,33 @@ bool a_fun_optimize_xam(void) {
 	//
 	// accumulate summation
 	a_double ax0 = ax[0];
-	a_double csum = a_double(0.0);
+	a_double csum(0.0);
 	csum = ax0 + ax0 + ax0 + ax0;
 	n_var = n_var + 3; // one per + operator
 	n_op = n_op + 3;
 	//
 	// define f(x) = y_0 = csum
 	ay[0] = csum;
-	a_fun af = a_fun(ax, ay);
+	d_fun f(ax, ay);
 	n_op = n_op + 1; // speical operator at end
 	//
 	// check number of variables and operators
-	ok = ok && af.size_var() == n_var;
-	ok = ok && af.size_op() == n_op;
+	ok = ok && f.size_var() == n_var;
+	ok = ok && f.size_op() == n_op;
 	//
 	// optimize
-	af.optimize();
+	f.optimize();
 	//
 	// number of variables and operators has decreased by two
-	ok = ok && af.size_var() == n_var-2;
-	ok = ok && af.size_op() == n_op-2;
+	ok = ok && f.size_var() == n_var-2;
+	ok = ok && f.size_op() == n_op-2;
 	//
 	return( ok  );
 }
 // END SOURCE
 // -----------------------------------------------------------------------------
 /*
-$begin a_fun_optimize_xam.cpp$$
+$begin fun_optimize_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -72,8 +72,8 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: Optimize an a_fun: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_optimize_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$section C++: Optimize an d_fun: Example and Test$$
+$srcfile|lib/example/cplusplus/fun_optimize_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

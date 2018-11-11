@@ -16,7 +16,7 @@
 %{
 # include <cppad/py/a_double.hpp>
 # include <cppad/py/sparse.hpp>
-# include <cppad/py/a_fun.hpp>
+# include <cppad/py/fun.hpp>
 # include <cppad/py/vector.hpp>
 # include <cppad/py/error.hpp>
 %}
@@ -42,7 +42,7 @@ Swig $code cppad_py$$ module.
 $end
 */
 # ifdef SWIGPYTHON
-%module cppad_py_swig
+%module swig
 # endif
 /* ------------------------------------------------------------------------- */
 
@@ -60,7 +60,7 @@ $end
 
 %include <cppad/py/a_double.hpp>
 %include <cppad/py/sparse.hpp>
-%include <cppad/py/a_fun.hpp>
+%include <cppad/py/fun.hpp>
 %include <cppad/py/error.hpp>
 
 namespace std {

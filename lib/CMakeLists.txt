@@ -8,7 +8,7 @@
 # Initialize check for this directory
 SET(check_lib_depends "")
 #
-# directory used for cppad_py_swig.include files
+# directory used for swig.include files
 INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/include )
 INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} )
 #
@@ -19,8 +19,9 @@ include (GenerateExportHeader)
 # cppad_py_lib (library used by sub-directories below)
 ADD_LIBRARY(cppad_py_lib SHARED
 	cplusplus/a_double.cpp
-	cplusplus/a_fun.cpp
+	cplusplus/fun.cpp
 	cplusplus/sparse.cpp
+	cplusplus/cppad_vec.cpp
 	cplusplus/error.cpp
 )
 # The file cppad_py_lib_export.h, in the current binary directory, will

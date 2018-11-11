@@ -5,59 +5,59 @@
 //              GNU General Public License version 3.0 or later see
 //                    https://www.gnu.org/licenses/gpl-3.0.txt
 // -----------------------------------------------------------------------------
-// jacobian
+// abort_recording
 // -----------------------------------------------------------------------------
 // BEGIN SOURCE
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_jacobian_xam(void) {
+bool fun_abort_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
-	using cppad_py::a_fun;
+	using cppad_py::d_fun;
 	//
 	// initialize return variable
 	bool ok = true;
 	//------------------------------------------------------------------------
-	// number of dependent and independent variables
-	int n_dep = 1;
-	int n_ind = 3;
+	int n_ind = 2;
 	//
-	// create the independent variables ax
-	vec_double x = vec_double(n_ind);
+	// create ax
+	vec_double x(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
-		x[i] = i + 2.0;
+		x[i] = i + 1.0;
 	}
 	vec_a_double ax = cppad_py::independent(x);
 	//
-	// create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
-	a_double ax_0 = ax[0];
-	a_double ax_1 = ax[1];
-	a_double ax_2 = ax[2];
-	vec_a_double ay = vec_a_double(n_dep);
-	ay[0] = ax_0 * ax_1 * ax_2;
+	// preform some a_double operations
+	a_double ax0 = ax[0];
+	a_double ax1 = ax[1];
+	a_double ay = ax0 + ax1;
 	//
-	// define af corresponding to f(x) = x_0 * x_1 * x_2
-	a_fun af = a_fun(ax, ay);
+	// check that ay is a variable; its value depends on the value of ax
+	ok = ok && ay.variable();
 	//
-	// compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
-	vec_double fp = af.jacobian(x);
+	// abort this recording
+	cppad_py::abort_recording();
 	//
-	// check Jacobian
-	double x_0 = x[0];
-	double x_1 = x[1];
-	double x_2 = x[2];
-	ok = ok && fp[0 * n_ind + 0] == x_1 * x_2 ;
-	ok = ok && fp[0 * n_ind + 1] == x_0 * x_2 ;
-	ok = ok && fp[0 * n_ind + 2] == x_0 * x_1 ;
+	// check that ay is now a parameter, no longer a variable.
+	ok = ok && ay.parameter();
+	//
+	// since it is a parameter, we can retrieve its value
+	double y = ay.value();
+	//
+	// its value should be x0 + x1
+	ok = ok && y  == x[0] + x[1];
+	//
+	// an abort when not recording has no effect
+	cppad_py::abort_recording();
 	//
 	return( ok );
 }
 // END SOURCE
 //
 /*
-$begin a_fun_jacobian_xam.cpp$$
+$begin fun_abort_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -66,8 +66,8 @@ $spell
 	Jacobian
 	Jacobians
 $$
-$section C++: Dense Jacobian Using AD: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_jacobian_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$section C++: Abort Recording a_double Operations: Example and Test$$
+$srcfile|lib/example/cplusplus/fun_abort_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

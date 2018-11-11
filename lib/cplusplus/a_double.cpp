@@ -19,19 +19,35 @@ a_double a_double::operator op(const a_double& ad) const \
 {	a_double result; \
 	*result.ptr() = *ptr() op *ad.ptr(); \
 	return result; \
+}\
+a_double a_double::operator op(const double& d) const \
+{	a_double result; \
+	*result.ptr() = *ptr() op d; \
+	return result; \
 }
+
 // comparison operators
 # define COMPARISON_OP(op) \
 bool a_double::operator op(const a_double& ad) const \
 {	bool result =  *ptr() op *ad.ptr(); \
 	return result; \
+}\
+bool a_double::operator op(const double& d) const \
+{	bool result =  *ptr() op d; \
+	return result; \
 }
+
 // compound assignment operators
-# define COMPOUND_ASSIGNMENT_OP(op) \
+# define ASSIGNMENT_OP(op) \
 a_double a_double::operator op(const a_double& ad)\
 {	*ptr() op *ad.ptr(); \
 	return *this; \
+}\
+a_double a_double::operator op(const double& d)\
+{	*ptr() op d; \
+	return *this; \
 }
+
 // unary functions with ad results
 # define UNARY_FUN_AD_RESULT(fun) \
 a_double a_double::fun(void) const \
@@ -55,9 +71,9 @@ const CppAD::AD<double>* a_double::ptr(void) const
 {	return reinterpret_cast< const CppAD::AD<double>* >( & data_ );
 }
 // ctor from CppAD::AD<double>
-a_double::a_double(const CppAD::AD<double>* ad_ptr)
+a_double::a_double(const CppAD::AD<double>* a_ptr)
 {	CPPAD_PY_ASSERT_UNKNOWN( sizeof(data_) == sizeof( CppAD::AD<double> ) );
-	new ( & data_ ) CppAD::AD<double>(*ad_ptr);
+	new ( & data_ ) CppAD::AD<double>(*a_ptr);
 }
 /*
 -------------------------------------------------------------------------------
@@ -78,7 +94,7 @@ $icode%ad% = cppad_py.a_double()
 %$$
 $icode%ad% = cppad_py.a_double(%d%)
 %$$
-$icode%ad% = cppad_py.a_double(%ad_other%)
+$icode%ad% = cppad_py.a_double(%a_other%)
 %$$
 
 $head Purpose$$
@@ -93,13 +109,13 @@ $codei%
 The resulting $icode ad$$ variable represents
 a constant function equal to $icode d$$.
 
-$head ad_other$$
+$head a_other$$
 This argument has prototype
 $codei%
-	const a_double& %ad_other%
+	const a_double& %a_other%
 %$$
 The resulting $icode ad$$ variable is the same function
-of the independent variables as $icode ad_other$$.
+of the independent variables as $icode a_other$$.
 
 $head ad$$
 is the $code a_double$$ object that is constructed.
@@ -282,9 +298,9 @@ bool a_double::near_equal(const a_double& ae)
 }
 /*
 -------------------------------------------------------------------------------
-$begin a_double_ad_binary$$
+$begin a_double_binary$$
 
-$section ad_double Binary Operators with an AD Result$$
+$section a_double Binary Operators with an AD Result$$
 $spell
 	vec
 	const
@@ -294,7 +310,10 @@ $spell
 $$
 
 $head Syntax$$
-$icode%az% = %ax% %op% %ay%$$
+$icode%az% = %ax% %op% %ay%
+%$$
+$icode%az% = %ax% %op% %y%
+%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
@@ -315,6 +334,12 @@ $codei%
 	const a_double& %ay%
 %$$
 
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
+%$$
+
 $head az$$
 The result has prototype
 $codei%
@@ -322,12 +347,12 @@ $codei%
 %$$
 
 $children%
-	lib/example/cplusplus/a_double_ad_binary_xam.cpp%
-	lib/example/python/a_double_ad_binary_xam.py
+	lib/example/cplusplus/a_double_binary_xam.cpp%
+	lib/example/python/a_double_binary_xam.py
 %$$
 $head Example$$
-$cref/C++/a_double_ad_binary_xam.cpp/$$,
-$cref/Python/a_double_ad_binary_xam.py/$$.
+$cref/C++/a_double_binary_xam.cpp/$$,
+$cref/Python/a_double_binary_xam.py/$$.
 
 $end
 */
@@ -339,7 +364,7 @@ BINARY_OP_AD_RESULT(/)
 -------------------------------------------------------------------------------
 $begin a_double_compare$$
 
-$section ad_double Comparison Operators$$
+$section a_double Comparison Operators$$
 $spell
 	vec
 	const
@@ -350,7 +375,10 @@ $spell
 $$
 
 $head Syntax$$
-$icode%b% = %ax% %op% %ay%$$
+$icode%b% = %ax% %op% %ay%
+%$$
+$icode%b% = %ax% %op% %y%
+%$$
 
 $head op$$
 The binary operator $icode op$$ is one of the following:
@@ -371,6 +399,12 @@ $head ay$$
 This object has prototype
 $codei%
 	const a_double& %ay%
+%$$
+
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
 %$$
 
 $head b$$
@@ -399,7 +433,7 @@ COMPARISON_OP(!=)
 -------------------------------------------------------------------------------
 $begin a_double_assign$$
 
-$section ad_double Assignment Operators$$
+$section a_double Assignment Operators$$
 $spell
 	vec
 	const
@@ -409,17 +443,20 @@ $spell
 $$
 
 $head Syntax$$
-$icode%ay% %op% %ax%%$$
+$icode%ax% %op% %ay%
+%$$
+$icode%aw% %op% %y%
+%$$
 
 $head op$$
 The assignment operator $icode op$$ is one of the following:
 $table
 $icode op$$ $pre  $$ $cnext Meaning            $rnext
 $code =$$ $cnext  simple assignment            $rnext
-$code +=$$ $cnext $icode%ay% = %ay% + %ax%$$   $rnext
-$code -=$$ $cnext $icode%ay% = %ay% - %ax%$$   $rnext
-$code *=$$ $cnext $icode%ay% = %ay% * %ax%$$   $rnext
-$code /=$$ $cnext $icode%ay% = %ay% / %ax%$$
+$code +=$$ $cnext $icode%ax% = %ax% + ( %ay% or %y% )%$$   $rnext
+$code -=$$ $cnext $icode%ax% = %ax% - ( %ay% or %y% )%$$   $rnext
+$code *=$$ $cnext $icode%ax% = %ax% * ( %ay% or %y% )%$$   $rnext
+$code /=$$ $cnext $icode%ax% = %ax% / ( %ay% or %y% )%$$   $rnext
 $tend
 
 $head ax$$
@@ -434,6 +471,12 @@ $codei%
 	a_double& %ay%
 %$$
 
+$head y$$
+This object has prototype
+$codei%
+	const double& %y%
+%$$
+
 $children%
 	lib/example/cplusplus/a_double_assign_xam.cpp%
 	lib/example/python/a_double_assign_xam.py
@@ -444,10 +487,11 @@ $cref/Python/a_double_assign_xam.py/$$.
 
 $end
 */
-COMPOUND_ASSIGNMENT_OP(+=)
-COMPOUND_ASSIGNMENT_OP(-=)
-COMPOUND_ASSIGNMENT_OP(*=)
-COMPOUND_ASSIGNMENT_OP(/=)
+ASSIGNMENT_OP(=)
+ASSIGNMENT_OP(+=)
+ASSIGNMENT_OP(-=)
+ASSIGNMENT_OP(*=)
+ASSIGNMENT_OP(/=)
 /*
 -------------------------------------------------------------------------------
 $begin a_double_unary_fun$$
@@ -561,12 +605,12 @@ $codei%
 		%target% = %if_false%
 %$$
 records either the true or false case depending on the value
-of $icode left$$ and $icode right$$; see $cref cpp_a_fun_ctor$$.
+of $icode left$$ and $icode right$$; see $cref cpp_fun_ctor$$.
 If $icode left$$ or $icode right$$ is a
 $cref/variable/a_double_property/variable/$$,
 it may be desirable to switch between $icode if_true$$ and $icode if_false$$
 depending of the value of the independent variable during
-calls to order zero $cref cpp_a_fun_forward$$.
+calls to order zero $cref cpp_fun_forward$$.
 The $code cond_assign$$ does this.
 
 $head target$$

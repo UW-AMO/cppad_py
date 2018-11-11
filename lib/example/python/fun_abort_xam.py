@@ -5,54 +5,55 @@
 #              GNU General Public License version 3.0 or later see
 #                    https://www.gnu.org/licenses/gpl-3.0.txt
 # -----------------------------------------------------------------------------
-# jacobian
+# abort_recording
 # -----------------------------------------------------------------------------
 # BEGIN SOURCE
-def a_fun_jacobian_xam() :
+def fun_abort_xam() :
 	#
+	import numpy
 	import numpy
 	import cppad_py
 	#
 	# initialize return variable
 	ok = True
 	# ---------------------------------------------------------------------
-	# number of dependent and independent variables
-	n_dep = 1
-	n_ind = 3
+	n_ind = 2
 	#
-	# create the independent variables ax
+	# create ax
 	x = numpy.empty(n_ind, dtype=float)
 	for i in range( n_ind  ) :
-		x[i] = i + 2.0
+		x[i] = i + 1.0
 	#
 	ax = cppad_py.independent(x)
 	#
-	# create dependent variables ay with ay0 = ax_0 * ax_1 * ax_2
-	ax_0  = ax[0]
-	ax_1  = ax[1]
-	ax_2  = ax[2]
-	ay    = numpy.empty(n_dep, dtype=cppad_py.a_double)
-	ay[0] = ax_0 * ax_1 * ax_2
+	# preform some a_double operations
+	ax0 = ax[0]
+	ax1 = ax[1]
+	ay = ax0 + ax1
 	#
-	# define af corresponding to f(x) = x_0 * x_1 * x_2
-	af = cppad_py.a_fun(ax, ay)
+	# check that ay is a variable; its value depends on the value of ax
+	ok = ok and ay.variable()
 	#
-	# compute the Jacobian f'(x) = ( x_1*x_2, x_0*x_2, x_0*x_1 )
-	fp = af.jacobian(x)
+	# abort this recording
+	cppad_py.abort_recording()
 	#
-	# check Jacobian
-	x_0 = x[0]
-	x_1 = x[1]
-	x_2 = x[2]
-	ok = ok and fp[0, 0] == x_1 * x_2
-	ok = ok and fp[0, 1] == x_0 * x_2
-	ok = ok and fp[0, 2] == x_0 * x_1
+	# check that ay is now a parameter, no longer a variable.
+	ok = ok and ay.parameter()
+	#
+	# since it is a parameter, we can retrieve its value
+	y = ay.value()
+	#
+	# its value should be x0 + x1
+	ok = ok and y  == x[0] + x[1]
+	#
+	# an abort when not recording has no effect
+	cppad_py.abort_recording()
 	#
 	return( ok )
 #
 # END SOURCE
 #
-# $begin a_fun_jacobian_xam.py$$ $newlinech #$$
+# $begin fun_abort_xam.py$$ $newlinech #$$
 # $spell
 #	py
 #	perl
@@ -62,7 +63,7 @@ def a_fun_jacobian_xam() :
 #	Jacobian
 #	Jacobians
 # $$
-# $section Python: Dense Jacobian Using AD: Example and Test$$
-# $srcfile|lib/example/python/a_fun_jacobian_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
+# $section Python: Abort Recording a_double Operations: Example and Test$$
+# $srcfile|lib/example/python/fun_abort_xam.py|0|# BEGIN SOURCE|# END SOURCE|$$
 # $end
 #

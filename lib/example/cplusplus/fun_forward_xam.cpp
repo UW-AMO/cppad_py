@@ -11,21 +11,22 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_fun_forward_xam(void) {
+bool fun_forward_xam(void) {
 	using cppad_py::a_double;
 	using cppad_py::vec_double;
 	using cppad_py::vec_a_double;
+	using cppad_py::d_fun;
 	using cppad_py::a_fun;
 	//
 	// initialize return variable
 	bool ok = true;
-	//------------------------------------------------------------------------
+	// ----------------------------------------------------------------------
 	// number of dependent and independent variables
 	int n_dep = 1;
 	int n_ind = 2;
 	//
 	// create the independent variables ax
-	vec_double xp = vec_double(n_ind);
+	vec_double xp(n_ind);
 	for(int i = 0; i < n_ind ; i++) {
 		xp[i] = i + 1.0;
 	}
@@ -34,11 +35,12 @@ bool a_fun_forward_xam(void) {
 	// create dependent varialbes ay with ay0 = ax0 * ax1
 	a_double ax0 = ax[0];
 	a_double ax1 = ax[1];
-	vec_a_double ay = vec_a_double(n_dep);
+	vec_a_double ay(n_dep);
 	ay[0] = ax0 * ax1;
 	//
 	// define af corresponding to f(x) = x0 * x1
-	a_fun af = a_fun(ax, ay);
+	d_fun f(ax, ay);
+	ok &= f.size_order() == 0;
 	//
 	// define X(t) = (3 + t, 2 + t)
 	// it follows that Y(t) = f(X(t)) = (3 + t) * (2 + t)
@@ -47,8 +49,9 @@ bool a_fun_forward_xam(void) {
 	int p = 0;
 	xp[0] = 3.0;
 	xp[1] = 2.0;
-	vec_double yp = af.forward(p, xp);
-	ok = ok && yp[0] == 6.0;
+	vec_double yp = f.forward(p, xp);
+	ok  = ok && yp[0] == 6.0;
+	ok &= f.size_order() == 1;
 	//
 	// first order Taylor coefficients for X(t)
 	p = 1;
@@ -57,8 +60,9 @@ bool a_fun_forward_xam(void) {
 	//
 	// first order Taylor coefficient for Y(t)
 	// Y'(0) = 3 + 2 = 5 and p ! = 1
-	yp = af.forward(p, xp);
+	yp = f.forward(p, xp);
 	ok = ok && yp[0] == 5.0;
+	ok &= f.size_order() == 2;
 	//
 	// second order Taylor coefficients for X(t)
 	p = 2;
@@ -67,15 +71,28 @@ bool a_fun_forward_xam(void) {
 	//
 	// second order Taylor coefficient for Y(t)
 	// Y''(0) = 2.0 and p ! = 2
-	yp = af.forward(p, xp);
+	yp = f.forward(p, xp);
 	ok = ok && yp[0] == 1.0;
+	ok &= f.size_order() == 3;
+	// ----------------------------------------------------------------------
+	a_fun af(f);
+	ok &= af.size_order() == 0;
+	//
+	// zero order forward
+	vec_a_double axp(n_ind), ayp(n_dep);
+	p      = 0;
+	axp[0] = 3.0;
+	axp[1] = 2.0;
+	ayp    = af.forward(p, axp);
+	ok     = ok && ayp[0] == 6.0;
+	ok    &= af.size_order() == 1;
 	//
 	return( ok );
 }
 // END SOURCE
 //
 /*
-$begin a_fun_forward_xam.cpp$$
+$begin fun_forward_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -85,7 +102,7 @@ $spell
 	Jacobians
 $$
 $section C++: Forward Mode AD: Example and Test$$
-$srcfile|lib/example/cplusplus/a_fun_forward_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/fun_forward_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

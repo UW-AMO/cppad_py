@@ -34,7 +34,7 @@ $spell
 	xam
 $$
 
-$section cppad_py-20180813: A C++ Object Library and Python Interface to Cppad$$
+$section cppad_py-20181110: A C++ Object Library and Python Interface to Cppad$$
 
 $head Purpose$$
 $list number$$
@@ -54,14 +54,14 @@ See $cref whats_new_2018$$ for changes.
 
 $head Getting Started$$
 The following is a good place to see what the interface is like:
-$cref/Python/a_fun_jacobian_xam.py/$$.
+$cref/Python/fun_jacobian_xam.py/$$.
 
 $head C++ Function Speed$$
 One can use Cppad Py to get faster function evaluation in scripting Python,
 when the sequence of floating point operations does not depend on the
 independent variables.
-Once an $cref a_fun$$ is recorded, zero order
-$cref/forward mode/py_a_fun_forward/$$ can be used to
+Once an $cref py_fun$$ is recorded, zero order
+$cref/forward mode/py_fun_forward/$$ can be used to
 effectively evaluate the function in C++ instead of Python.
 
 $head License$$

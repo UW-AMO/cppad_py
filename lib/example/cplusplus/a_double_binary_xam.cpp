@@ -11,33 +11,38 @@
 # include <cstdio>
 # include <cppad/py/cppad_py.hpp>
 
-bool a_double_ad_binary_xam(void) {
+bool a_double_binary_xam(void) {
 	using cppad_py::a_double;
+	bool ok      = true;
+	a_double a2  = 2.0;
+	a_double a3(3.0);
+	// -----------------------------------------------------------------------
+	a_double a5       = a2 + a3;
+	a_double a6       = a2 * a3;
+	a_double a1_minus = a2 - a3;
+	a_double a23      = a2 / a3;
 	//
-	// initialize return variable
-	bool ok = true;
-	//------------------------------------------------------------------------
-	a_double two = a_double(2.0);
-	a_double three = a_double(3.0);
+	ok = ok && a5 == 5.0;
+	ok = ok && a6 == 6.0;
+	ok = ok && a1_minus == -1.0;
+	ok = ok && a23.near_equal( a_double(2.0 / 3.0 ) );
+	// -----------------------------------------------------------------------
+	a5       = a2 + 3.0;
+	a6       = a2 * 3.0;
+	a1_minus = a2 - 3.0;
+	a23      = a2 / 3.0;
 	//
-	a_double five = two + three;
-	a_double six = two * three;
-	a_double neg_one = two - three;
-	a_double two_thirds = two / three;
-	//
-	ok = ok && five.value() == 5.0;
-	ok = ok && six.value() == 6.0;
-	ok = ok && neg_one.value() == -1.0;
-	ok = ok && 0.5 < two_thirds.value();
-	ok = ok && two_thirds.value() < 1.0;
-	ok = ok && five < six;
+	ok = ok && a5 == 5.0;
+	ok = ok && a6 == 6.0;
+	ok = ok && a1_minus == -1.0;
+	ok = ok && a23.near_equal( a_double(2.0 / 3.0 ) );
 	//
 	return( ok );
 }
 // END SOURCE
 //
 /*
-$begin a_double_ad_binary_xam.cpp$$
+$begin a_double_binary_xam.cpp$$
 $spell
 	cplusplus
 	cppad
@@ -47,7 +52,7 @@ $spell
 	Jacobians
 $$
 $section C++: a_double Binary Operators With AD Result: Example and Test$$
-$srcfile|lib/example/cplusplus/a_double_ad_binary_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
+$srcfile|lib/example/cplusplus/a_double_binary_xam.cpp|0|// BEGIN SOURCE|// END SOURCE|$$
 $end
 */
 //

@@ -62,7 +62,9 @@ command = [
 print( ' '.join(command) )
 flag    = subprocess.call(command)
 if flag != 0 :
-		sys.exit('setup.py: cmake command failed')
+	sys.exit('setup.py: cmake command failed')
+else :
+	print('setup.py: cmake command OK')
 os.chdir('..')
 # -----------------------------------------------------------------------------
 # In lib/example/python: check_all.py.in -> check_all.py
@@ -105,7 +107,9 @@ if python_major_version == 3 :
 	command.insert(1, '-py3')
 flag    = subprocess.call(command)
 if flag != 0 :
-		sys.exit('setup.py: swig command failed')
+	sys.exit('setup.py: swig command failed')
+else :
+	print('setup.py: swig command OK')
 #
 # change back to top soruce directory
 os.chdir('..')
@@ -127,7 +131,7 @@ if build_type == 'debug' :
 	undef_macros = [ 'NDEBUG' ]
 	extra_compile_args.append( '-O1' )
 #
-cppad_py_extension_name   = 'cppad_py/_cppad_py_swig'
+cppad_py_extension_name   = 'cppad_py/_swig'
 extension_module          = Extension(
 	cppad_py_extension_name                               ,
 	cppad_py_extension_sources                            ,
