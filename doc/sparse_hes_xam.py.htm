@@ -64,9 +64,10 @@ A:active { color : purple }
 <td>
 <select onchange='choose_down3(this)'>
 <option>py_lib-&gt;</option>
-<option>py_a_fun</option>
+<option>py_fun</option>
 <option>py_sparse</option>
 <option>py_utility</option>
+<option>more_py</option>
 </select>
 </td>
 <td>
@@ -126,7 +127,7 @@ A:active { color : purple }
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># define af corresponding to f(x)</font></i>
-     af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># Set select_d (domain) to all true,</font></i>
      <i><font color="#9A1900"># initial select_r (range) to all false</font></i>
@@ -147,7 +148,7 @@ A:active { color : purple }
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># sparisty pattern for Hessian</font></i>
      pattern <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_rc</font></b><font color="#990000">()</font>
-     af<font color="#990000">.</font><b><font color="#000000">for_hes_sparsity</font></b><font color="#990000">(</font>select_d<font color="#990000">,</font> select_r<font color="#990000">,</font> pattern<font color="#990000">)</font>
+     f<font color="#990000">.</font><b><font color="#000000">for_hes_sparsity</font></b><font color="#990000">(</font>select_d<font color="#990000">,</font> select_r<font color="#990000">,</font> pattern<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># compute all possibly non-zero entries in Hessian</font></i>
      <i><font color="#9A1900"># (should only compute lower triangle becuase matrix is symmetric)</font></i>
@@ -156,7 +157,7 @@ A:active { color : purple }
      <i><font color="#9A1900"># work space used to save time for multiple calls</font></i>
      work <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">sparse_hes_work</font></b><font color="#990000">()</font>
      <i><font color="#9A1900">#</font></i>
-     af<font color="#990000">.</font><b><font color="#000000">sparse_hes</font></b><font color="#990000">(</font>subset<font color="#990000">,</font> x<font color="#990000">,</font> r<font color="#990000">,</font> pattern<font color="#990000">,</font> work<font color="#990000">)</font>
+     f<font color="#990000">.</font><b><font color="#000000">sparse_hes</font></b><font color="#990000">(</font>subset<font color="#990000">,</font> x<font color="#990000">,</font> r<font color="#990000">,</font> pattern<font color="#990000">,</font> work<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># check that result is sparsity pattern for Hessian of f_0 (x)</font></i>
      ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> subset<font color="#990000">.</font><b><font color="#000000">nnz</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">2</font>

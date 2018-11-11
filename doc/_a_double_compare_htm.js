@@ -24,15 +24,16 @@ var list_down3 = [
 var list_down2 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down1 = [
 'a_double_ctor.htm',
 'a_double_unary_op.htm',
 'a_double_property.htm',
-'a_double_ad_binary.htm',
+'a_double_binary.htm',
 'a_double_compare.htm',
 'a_double_assign.htm',
 'a_double_unary_fun.htm',
@@ -47,6 +48,7 @@ var list_current0 = [
 'a_double_compare.htm#op',
 'a_double_compare.htm#ax',
 'a_double_compare.htm#ay',
+'a_double_compare.htm#y',
 'a_double_compare.htm#b',
 'a_double_compare.htm#Example'
 ];

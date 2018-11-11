@@ -20,9 +20,10 @@ var list_down4 = [
 var list_down3 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down2 = [
 'cpp_sparse_rc.htm',

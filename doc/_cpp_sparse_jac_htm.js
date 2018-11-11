@@ -24,9 +24,10 @@ var list_down3 = [
 var list_down2 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down1 = [
 'cpp_sparse_rc.htm',
@@ -44,7 +45,7 @@ var list_current0 = [
 'cpp_sparse_jac.htm#Purpose',
 'cpp_sparse_jac.htm#sparse_jac_for',
 'cpp_sparse_jac.htm#sparse_jac_rev',
-'cpp_sparse_jac.htm#af',
+'cpp_sparse_jac.htm#f',
 'cpp_sparse_jac.htm#subset',
 'cpp_sparse_jac.htm#x',
 'cpp_sparse_jac.htm#pattern',

@@ -12,10 +12,10 @@ MathJax.Hub.Config({
 >
 </script>
 <head>
-<title>ad_double Assignment Operators</title>
+<title>a_double Assignment Operators</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
-<meta name="description" id="description" content="ad_double Assignment Operators">
-<meta name="keywords" id="keywords" content=" ad_double assignment operators syntax op ax ay example ">
+<meta name="description" id="description" content="a_double Assignment Operators">
+<meta name="keywords" id="keywords" content=" a_double assignment operators syntax op ax ay y example ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -73,9 +73,10 @@ A:active { color : purple }
 <option>cpp_lib-&gt;</option>
 <option>a_double</option>
 <option>vector</option>
-<option>a_fun</option>
+<option>cpp_fun</option>
 <option>sparse</option>
-<option>error</option>
+<option>cpp_utility</option>
+<option>more_cpp</option>
 </select>
 </td>
 <td>
@@ -84,7 +85,7 @@ A:active { color : purple }
 <option>a_double_ctor</option>
 <option>a_double_unary_op</option>
 <option>a_double_property</option>
-<option>a_double_ad_binary</option>
+<option>a_double_binary</option>
 <option>a_double_compare</option>
 <option>a_double_assign</option>
 <option>a_double_unary_fun</option>
@@ -105,6 +106,7 @@ A:active { color : purple }
 <option>op</option>
 <option>ax</option>
 <option>ay</option>
+<option>y</option>
 <option>Example</option>
 </select>
 </td>
@@ -112,16 +114,17 @@ A:active { color : purple }
 @(@\newcommand{\B}[1]{ {\bf #1} }
 \newcommand{\R}[1]{ {\rm #1} }@)@
 
-<center><b><big><big>ad_double Assignment Operators</big></big></b></center>
+<center><b><big><big>a_double Assignment Operators</big></big></b></center>
 <br>
 <b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
 
 <br>
 
-<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>op</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"></font></code>
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>op</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+</span></font></code>
 
-
-<br>
+<code><i><font color="black"><span style='white-space: nowrap'>aw</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>op</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+</span></font></code>
 <br>
 <b><big><a name="op" id="op">op</a></big></b>
 <br>
@@ -140,22 +143,23 @@ The assignment operator
 
 <code><font color="blue">+=</font></code> </td><td align='left'  valign='top'>
  
-<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;+&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;+&nbsp;(&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;or&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;)</span></font></code>
    </td></tr><tr><td align='left'  valign='top'>
 
 <code><font color="blue">-=</font></code> </td><td align='left'  valign='top'>
  
-<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;-&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;-&nbsp;(&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;or&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;)</span></font></code>
    </td></tr><tr><td align='left'  valign='top'>
 
 <code><font color="blue">*=</font></code> </td><td align='left'  valign='top'>
  
-<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;*&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;*&nbsp;(&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;or&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;)</span></font></code>
    </td></tr><tr><td align='left'  valign='top'>
 
 <code><font color="blue">/=</font></code> </td><td align='left'  valign='top'>
  
-<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;/&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;/&nbsp;(&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;or&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;)</span></font></code>
+   </td></tr><tr><td align='left'  valign='top'>
 
 </td></tr>
 </table>
@@ -174,6 +178,14 @@ This object has prototype
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a_double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
+</span></font></code>
+<br>
+<b><big><a name="y" id="y">y</a></big></b>
+<br>
+This object has prototype
+
+<code><font color="blue"><span style='white-space: nowrap'><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;double&amp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>y</span></font></i><font color="blue"><span style='white-space: nowrap'><br>
 </span></font></code>
 <br>
 <b><big><a name="Example" id="Example">Example</a></big></b>

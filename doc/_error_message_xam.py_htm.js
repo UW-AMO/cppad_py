@@ -9,7 +9,7 @@ var list_up0 = [
 'cppad_py.htm',
 'library.htm',
 'cpp_lib.htm',
-'error.htm',
+'cpp_utility.htm',
 'error_message.htm',
 'error_message_xam.py.htm'
 ];
@@ -20,11 +20,14 @@ var list_down4 = [
 var list_down3 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down2 = [
+'vec2cppad_double.htm',
+'vec2a_double.htm',
 'error_message.htm'
 ];
 var list_down1 = [

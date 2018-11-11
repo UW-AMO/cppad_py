@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Jacobian Sparsity Patterns</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Jacobian Sparsity Patterns">
-<meta name="keywords" id="keywords" content=" jacobian sparsity patterns syntax purpose for_jac_sparsity rev_jac_sparsity x af pattern_in pattern_out entire example ">
+<meta name="keywords" id="keywords" content=" jacobian sparsity patterns syntax purpose for_jac_sparsity rev_jac_sparsity x f pattern_in pattern_out entire example ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -71,9 +71,10 @@ A:active { color : purple }
 <td>
 <select onchange='choose_down2(this)'>
 <option>py_lib-&gt;</option>
-<option>py_a_fun</option>
+<option>py_fun</option>
 <option>py_sparse</option>
 <option>py_utility</option>
+<option>more_py</option>
 </select>
 </td>
 <td>
@@ -101,7 +102,7 @@ A:active { color : purple }
 <option>---..for_jac_sparsity</option>
 <option>---..rev_jac_sparsity</option>
 <option>x</option>
-<option>af</option>
+<option>f</option>
 <option>pattern_in</option>
 <option>pattern_out</option>
 <option>Sparsity for Entire Jacobian</option>
@@ -116,10 +117,10 @@ A:active { color : purple }
 
 <br>
 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i><font color="blue"><span style='white-space: nowrap'>.for_jac_sparsity(</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_in</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_out</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.for_jac_sparsity(</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_in</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_out</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i><font color="blue"><span style='white-space: nowrap'>.rev_jac_sparsity(</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_in</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_out</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.rev_jac_sparsity(</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_in</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern_out</span></font></i><font color="blue"><span style='white-space: nowrap'>)</span></font></code>
 
 
 <br>
@@ -130,7 +131,7 @@ We use <small>@(@
 F : \B{R}^n \rightarrow \B{R}^m
 @)@</small> to denote the
 function corresponding to the operation sequence stored in 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
 .
 
 <br>
@@ -179,7 +180,7 @@ Note that a sparsity pattern for <small>@(@
 J(x)
 @)@</small> corresponds to the
 operation sequence stored in 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
  and does not depend on
 the argument 
 <code><i><font color="black"><span style='white-space: nowrap'>x</span></font></i></code>
@@ -187,19 +188,19 @@ the argument
 
 <br>
 <br>
-<b><big><a name="af" id="af">af</a></big></b>
+<b><big><a name="f" id="f">f</a></big></b>
 <br>
 This object must have been returned by a previous call to the python
-<a href="py_a_fun_ctor.htm" target="_top"><span style='white-space: nowrap'>a_fun</span></a>
+<a href="py_fun_ctor.htm" target="_top"><span style='white-space: nowrap'>d_fun</span></a>
  constructor.
 The object 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
  is not constant when using
 <code><font color="blue">for_jac_sparsity</font></code>.
 After a call to <code><font color="blue">for_jac_sparsity</font></code>, a sparsity pattern
 for each of the variables in the operation sequence
 is held in 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
  for possible later use during
 reverse Hessian sparsity calculations.
 

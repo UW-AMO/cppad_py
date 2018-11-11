@@ -24,9 +24,10 @@ var list_down3 = [
 var list_down2 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down1 = [
 'cpp_sparse_rc.htm',
@@ -45,7 +46,7 @@ var list_current0 = [
 'cpp_jac_sparsity.htm#Purpose.for_jac_sparsity',
 'cpp_jac_sparsity.htm#Purpose.rev_jac_sparsity',
 'cpp_jac_sparsity.htm#x',
-'cpp_jac_sparsity.htm#af',
+'cpp_jac_sparsity.htm#f',
 'cpp_jac_sparsity.htm#pattern_in',
 'cpp_jac_sparsity.htm#pattern_out',
 'cpp_jac_sparsity.htm#Sparsity for Entire Jacobian',

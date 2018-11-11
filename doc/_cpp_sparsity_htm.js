@@ -24,9 +24,10 @@ var list_down3 = [
 var list_down2 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down1 = [
 'cpp_sparse_rc.htm',
@@ -43,7 +44,7 @@ var list_current0 = [
 'cpp_sparsity.htm#Syntax',
 'cpp_sparsity.htm#Purpose',
 'cpp_sparsity.htm#x',
-'cpp_sparsity.htm#af',
+'cpp_sparsity.htm#f',
 'cpp_sparsity.htm#select_domain',
 'cpp_sparsity.htm#select_range',
 'cpp_sparsity.htm#pattern_out',

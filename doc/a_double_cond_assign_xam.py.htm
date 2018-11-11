@@ -66,9 +66,10 @@ A:active { color : purple }
 <option>cpp_lib-&gt;</option>
 <option>a_double</option>
 <option>vector</option>
-<option>a_fun</option>
+<option>cpp_fun</option>
 <option>sparse</option>
-<option>error</option>
+<option>cpp_utility</option>
+<option>more_cpp</option>
 </select>
 </td>
 <td>
@@ -77,7 +78,7 @@ A:active { color : purple }
 <option>a_double_ctor</option>
 <option>a_double_unary_op</option>
 <option>a_double_property</option>
-<option>a_double_ad_binary</option>
+<option>a_double_binary</option>
 <option>a_double_compare</option>
 <option>a_double_assign</option>
 <option>a_double_unary_fun</option>
@@ -134,7 +135,7 @@ A:active { color : purple }
      <i><font color="#9A1900"># f(x) = taget</font></i>
      ay <font color="#990000">=</font> numpy<font color="#990000">.</font><b><font color="#000000">empty</font></b><font color="#990000">(</font>n_dep<font color="#990000">,</font> dtype<font color="#990000">=</font>cppad_py<font color="#990000">.</font>a_double<font color="#990000">)</font>
      ay<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> target
-     af <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">a_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
+     f  <font color="#990000">=</font> cppad_py<font color="#990000">.</font><b><font color="#000000">d_fun</font></b><font color="#990000">(</font>ax<font color="#990000">,</font> ay<font color="#990000">)</font>
      <i><font color="#9A1900">#</font></i>
      <i><font color="#9A1900"># assignment with different independent variable values</font></i>
      x<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">9.0</font> <i><font color="#9A1900"># left</font></i>
@@ -142,7 +143,7 @@ A:active { color : purple }
      x<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">7.0</font> <i><font color="#9A1900"># if_true</font></i>
      x<font color="#990000">[</font><font color="#993399">3</font><font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">6.0</font> <i><font color="#9A1900"># if_false</font></i>
      p <font color="#990000">=</font> <font color="#993399">0</font>
-     y <font color="#990000">=</font> af<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font>p<font color="#990000">,</font> x<font color="#990000">)</font>
+     y <font color="#990000">=</font> f<font color="#990000">.</font><b><font color="#000000">forward</font></b><font color="#990000">(</font>p<font color="#990000">,</font> x<font color="#990000">)</font>
      ok <font color="#990000">=</font> ok <b><font color="#0000FF">and</font></b> y<font color="#990000">[</font><font color="#993399">0</font><font color="#990000">]</font> <font color="#990000">==</font> <font color="#993399">6.0</font>
      <i><font color="#9A1900">#</font></i>
      <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok  <font color="#990000">)</font>

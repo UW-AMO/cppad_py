@@ -1,0 +1,204 @@
+<html>
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath:  [ ['@(@','@)@'] ] ,
+    displayMath: [ ['@[@','@]@'] ]
+  }
+});
+</script>
+<script type='text/javascript' src=
+'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default'
+>
+</script>
+<head>
+<title>Stop Current Recording and Store Function Object</title>
+<meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
+<meta name="description" id="description" content="Stop Current Recording and Store Function Object">
+<meta name="keywords" id="keywords" content=" stop current recording store function object syntax d_fun a_fun ax ay f af example ">
+<style type='text/css'>
+body { color : black }
+body { background-color : white }
+A:link { color : blue }
+A:visited { color : purple }
+A:active { color : purple }
+</style>
+<script type='text/javascript' language='JavaScript' src='_py_fun_ctor_htm.js'>
+</script>
+</head>
+<body>
+<table><tr>
+<td>
+<a href="https://github.com/bradbell/cppad_py" target="_top"><img border="0" src="_image.gif"></a>
+</td>
+<td><a href="fun_abort_xam.py.htm" target="_top">Prev</a>
+</td><td><a href="a_fun_xam.py.htm" target="_top">Next</a>
+</td><td>
+<select onchange='choose_across0(this)'>
+<option>Index-&gt;</option>
+<option>contents</option>
+<option>reference</option>
+<option>index</option>
+<option>search</option>
+<option>external</option>
+</select>
+</td>
+<td>
+<select onchange='choose_up0(this)'>
+<option>Up-&gt;</option>
+<option>cppad_py</option>
+<option>library</option>
+<option>py_lib</option>
+<option>py_fun</option>
+<option>py_fun_ctor</option>
+</select>
+</td>
+<td>
+<select onchange='choose_down4(this)'>
+<option>cppad_py-&gt;</option>
+<option>setup.py</option>
+<option>library</option>
+<option>whats_new_2018</option>
+</select>
+</td>
+<td>
+<select onchange='choose_down3(this)'>
+<option>library-&gt;</option>
+<option>py_lib</option>
+<option>cpp_lib</option>
+</select>
+</td>
+<td>
+<select onchange='choose_down2(this)'>
+<option>py_lib-&gt;</option>
+<option>py_fun</option>
+<option>py_sparse</option>
+<option>py_utility</option>
+<option>more_py</option>
+</select>
+</td>
+<td>
+<select onchange='choose_down1(this)'>
+<option>py_fun-&gt;</option>
+<option>py_independent</option>
+<option>py_abort_recording</option>
+<option>py_fun_ctor</option>
+<option>py_fun_property</option>
+<option>py_fun_new_dynamic</option>
+<option>py_fun_jacobian</option>
+<option>py_fun_hessian</option>
+<option>py_fun_forward</option>
+<option>py_fun_reverse</option>
+<option>py_fun_optimize</option>
+</select>
+</td>
+<td>
+<select onchange='choose_down0(this)'>
+<option>py_fun_ctor-&gt;</option>
+<option>a_fun_xam.py</option>
+</select>
+</td>
+<td>
+<select onchange='choose_current0(this)'>
+<option>Headings-&gt;</option>
+<option>Syntax</option>
+<option>---..d_fun</option>
+<option>---..a_fun</option>
+<option>ax</option>
+<option>ay</option>
+<option>f</option>
+<option>af</option>
+<option>Example</option>
+</select>
+</td>
+</tr></table><br>
+@(@\newcommand{\B}[1]{ {\bf #1} }
+\newcommand{\R}[1]{ {\rm #1} }@)@<center><b><big><big>Stop Current Recording and Store Function Object</big></big></b></center>
+<br>
+<b><big><a name="Syntax" id="Syntax">Syntax</a></big></b>
+
+
+<br>
+<br>
+<big><a name="Syntax.d_fun" id="Syntax.d_fun">d_fun</a></big>
+
+<br>
+
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.d_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
+<br>
+<big><a name="Syntax.a_fun" id="Syntax.a_fun">a_fun</a></big>
+
+<br>
+
+<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.a_fun(</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+</span></font></code>
+<br>
+<b><big><a name="ax" id="ax">ax</a></big></b>
+<br>
+This argument must be the same as
+<a href="py_independent.htm#ax" target="_top"><span style='white-space: nowrap'>ax</span></a>
+
+returned by the previous call to <code><font color="blue">independent</font></code>; i.e.,
+it must be the independent variable vector.
+We use 
+<code><i><font color="black"><span style='white-space: nowrap'>n</span></font></i></code>
+
+to denote the number of independent variables (the size of 
+<code><i><font color="black"><span style='white-space: nowrap'>ax</span></font></i></code>
+).
+
+<br>
+<br>
+<b><big><a name="ay" id="ay">ay</a></big></b>
+<br>
+This argument is a numpy array with <code><font color="blue">a_double</font></code> elements.
+It specifies the dependent variables.
+We use 
+<code><i><font color="black"><span style='white-space: nowrap'>m</span></font></i></code>
+
+to denote the number of dependent variables (the size of 
+<code><i><font color="black"><span style='white-space: nowrap'>ay</span></font></i></code>
+).
+
+<br>
+<br>
+<b><big><a name="f" id="f">f</a></big></b>
+<br>
+This result is a function object that
+has a representation for the floating point operations
+that mapped the independent variables to the dependent variables.
+This object computes function and derivative values using
+<code><font color="blue">double</font></code>
+
+<br>
+<br>
+<b><big><a name="af" id="af">af</a></big></b>
+<br>
+This result is a function object that
+has a representation for the same function as 
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
+.
+This object computes function and derivative values using
+<code><font color="blue">a_double</font></code>
+Initially, there are not Taylor coefficient stored in 
+<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+; i.e.,
+<a href="py_fun_property.htm#size_order" target="_top"><span style='white-space: nowrap'>af.size_order()</span></a>
+ is zero.
+
+
+<br>
+<br>
+<b><big><a name="Example" id="Example">Example</a></big></b>
+<br>
+All of the examples use the <code><font color="blue">d_fun</font></code> constructor.
+The example <a href="a_fun_xam.py.htm" target="_top"><span style='white-space: nowrap'>a_fun_xam.py</span></a>
+ demonstrates the purpose of
+<code><font color="blue">a_fun</font></code> objects.
+
+
+<hr>Input File: lib/python/fun_ctor.py
+
+</body>
+</html>

@@ -66,9 +66,10 @@ A:active { color : purple }
 <option>cpp_lib-&gt;</option>
 <option>a_double</option>
 <option>vector</option>
-<option>a_fun</option>
+<option>cpp_fun</option>
 <option>sparse</option>
-<option>error</option>
+<option>cpp_utility</option>
+<option>more_cpp</option>
 </select>
 </td>
 <td>
@@ -107,15 +108,15 @@ A:active { color : purple }
      <font color="#009900">int</font> n <font color="#990000">=</font> <font color="#993399">4</font><font color="#990000">;</font>
      <font color="#008080">vec_bool</font> bv <font color="#990000">=</font> <b><font color="#000000">vec_bool</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
      <font color="#008080">vec_int</font> iv <font color="#990000">=</font> <b><font color="#000000">vec_int</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
-     <font color="#008080">vec_double</font> dv <font color="#990000">=</font> <b><font color="#000000">vec_double</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
-     <font color="#008080">vec_a_double</font> av <font color="#990000">=</font> <b><font color="#000000">vec_a_double</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
+     <font color="#008080">vec_double</font> <b><font color="#000000">dv</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
+     <font color="#008080">vec_a_double</font> <b><font color="#000000">av</font></b><font color="#990000">(</font>n<font color="#990000">);</font>
      <i><font color="#9A1900">//</font></i>
      <i><font color="#9A1900">// setting elements</font></i>
      <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> n <font color="#990000">;</font> i<font color="#990000">++)</font> <font color="#FF0000">{</font>
           bv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> i <font color="#990000">&gt;</font> n <font color="#990000">/</font> <font color="#993399">2</font><font color="#990000">;</font>
           iv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">2</font> <font color="#990000">*</font> i<font color="#990000">;</font>
           dv<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i<font color="#990000">;</font>
-          av<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <b><font color="#000000">a_double</font></b><font color="#990000">(</font><font color="#993399">4.0</font> <font color="#990000">*</font> i<font color="#990000">);</font>
+          av<font color="#990000">[</font>i<font color="#990000">]</font> <font color="#990000">=</font> <font color="#993399">4.0</font> <font color="#990000">*</font> i<font color="#990000">;</font>
      <font color="#FF0000">}</font>
      <i><font color="#9A1900">//</font></i>
      <b><font color="#0000FF">for</font></b><font color="#990000">(</font><font color="#009900">int</font> i <font color="#990000">=</font> <font color="#993399">0</font><font color="#990000">;</font> i <font color="#990000">&lt;</font> n <font color="#990000">;</font> i<font color="#990000">++)</font> <font color="#FF0000">{</font>
@@ -129,7 +130,7 @@ A:active { color : purple }
           ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> de <font color="#990000">==</font> <font color="#993399">3.0</font> <font color="#990000">*</font> i <font color="#990000">;</font>
           <i><font color="#9A1900">//</font></i>
           <font color="#008080">a_double</font> ae <font color="#990000">=</font> av<font color="#990000">[</font>i<font color="#990000">];</font>
-          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ae<font color="#990000">.</font><b><font color="#000000">value</font></b><font color="#990000">()</font> <font color="#990000">==</font> <font color="#993399">4.0</font> <font color="#990000">*</font> i <font color="#990000">;</font>
+          ok <font color="#990000">=</font> ok <font color="#990000">&amp;&amp;</font> ae <font color="#990000">==</font> <font color="#993399">4.0</font> <font color="#990000">*</font> i <font color="#990000">;</font>
      <font color="#FF0000">}</font>
      <i><font color="#9A1900">//</font></i>
      <b><font color="#0000FF">return</font></b><font color="#990000">(</font> ok <font color="#990000">);</font>

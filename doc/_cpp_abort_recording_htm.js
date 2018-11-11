@@ -9,7 +9,7 @@ var list_up0 = [
 'cppad_py.htm',
 'library.htm',
 'cpp_lib.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'cpp_abort_recording.htm'
 ];
 var list_down4 = [
@@ -24,23 +24,25 @@ var list_down3 = [
 var list_down2 = [
 'a_double.htm',
 'vector.htm',
-'a_fun.htm',
+'cpp_fun.htm',
 'sparse.htm',
-'error.htm'
+'cpp_utility.htm',
+'more_cpp.htm'
 ];
 var list_down1 = [
 'cpp_independent.htm',
 'cpp_abort_recording.htm',
-'cpp_a_fun_ctor.htm',
-'cpp_a_fun_property.htm',
-'cpp_a_fun_jacobian.htm',
-'cpp_a_fun_hessian.htm',
-'cpp_a_fun_forward.htm',
-'cpp_a_fun_reverse.htm',
-'cpp_a_fun_optimize.htm'
+'cpp_fun_ctor.htm',
+'cpp_fun_property.htm',
+'cpp_fun_new_dynamic.htm',
+'cpp_fun_jacobian.htm',
+'cpp_fun_hessian.htm',
+'cpp_fun_forward.htm',
+'cpp_fun_reverse.htm',
+'cpp_fun_optimize.htm'
 ];
 var list_down0 = [
-'a_fun_abort_xam.cpp.htm'
+'fun_abort_xam.cpp.htm'
 ];
 var list_current0 = [
 'cpp_abort_recording.htm#Syntax',

@@ -15,7 +15,7 @@ MathJax.Hub.Config({
 <title>Computing Sparse Hessians</title>
 <meta http-equiv='Content-Type' content='text/html' charset='utf-8'>
 <meta name="description" id="description" content="Computing Sparse Hessians">
-<meta name="keywords" id="keywords" content=" computing sparse hessians syntax purpose af subset x r pattern work n_sweep uses forward example ">
+<meta name="keywords" id="keywords" content=" computing sparse hessians syntax purpose f subset x r pattern work n_sweep uses forward example ">
 <style type='text/css'>
 body { color : black }
 body { background-color : white }
@@ -71,9 +71,10 @@ A:active { color : purple }
 <td>
 <select onchange='choose_down2(this)'>
 <option>py_lib-&gt;</option>
-<option>py_a_fun</option>
+<option>py_fun</option>
 <option>py_sparse</option>
 <option>py_utility</option>
+<option>more_py</option>
 </select>
 </td>
 <td>
@@ -98,7 +99,7 @@ A:active { color : purple }
 <option>Headings-&gt;</option>
 <option>Syntax</option>
 <option>Purpose</option>
-<option>af</option>
+<option>f</option>
 <option>subset</option>
 <option>x</option>
 <option>r</option>
@@ -120,7 +121,7 @@ A:active { color : purple }
 <code><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;cppad_py.sparse_hes_work()<br>
 </span></font></code>
 
-<code><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>af</span></font></i><font color="blue"><span style='white-space: nowrap'>.sparse_hes(</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>r</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+<code><i><font color="black"><span style='white-space: nowrap'>n_sweep</span></font></i><font color="blue"><span style='white-space: nowrap'>&nbsp;=&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.sparse_hes(</span></font><i><font color="black"><span style='white-space: nowrap'>subset</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>r</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>pattern</span></font></i><font color="blue"><span style='white-space: nowrap'>,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>work</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 <br>
 <b><big><a name="Purpose" id="Purpose">Purpose</a></big></b>
@@ -129,7 +130,7 @@ We use <small>@(@
 F : \B{R}^n \rightarrow \B{R}^m
 @)@</small> to denote the
 function corresponding to 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
 .
 Given a vector <small>@(@
 r \in \B{R}^m
@@ -146,13 +147,13 @@ H(x)
 
 <br>
 <br>
-<b><big><a name="af" id="af">af</a></big></b>
+<b><big><a name="f" id="f">f</a></big></b>
 <br>
 This object must have been returned by a previous call to the python
-<a href="py_a_fun_ctor.htm" target="_top"><span style='white-space: nowrap'>a_fun</span></a>
+<a href="py_fun_ctor.htm" target="_top"><span style='white-space: nowrap'>d_fun</span></a>
  constructor.
 Note that the Taylor coefficients stored in 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
  are affected
 by this operation; see
 <a href="py_sparse_hes.htm#Uses Forward" target="_top"><span style='white-space: nowrap'>uses&nbsp;forward</span></a>
@@ -256,7 +257,7 @@ If it is empty, information is stored in
 .
 This can be used to reduce computation when
 a future call is for the same object 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
 ,
 and the same subset of the Hessian.
 If either of these values change, use 
@@ -287,17 +288,17 @@ or combining multiple columns and rows into a single sweep.
 <br>
 <b><big><a name="Uses Forward" id="Uses Forward">Uses Forward</a></big></b>
 <br>
-After each call to <a href="py_a_fun_forward.htm" target="_top"><span style='white-space: nowrap'>py_a_fun_forward</span></a>
+After each call to <a href="py_fun_forward.htm" target="_top"><span style='white-space: nowrap'>py_fun_forward</span></a>
 ,
 the object 
-<code><i><font color="black"><span style='white-space: nowrap'>af</span></font></i></code>
+<code><i><font color="black"><span style='white-space: nowrap'>f</span></font></i></code>
  contains the corresponding Taylor coefficients
 for all the variables in the operation sequence..
 After a call to <code><font color="blue">sparse_hes</font></code>
 the zero order coefficients correspond to
 
 <code><font color="blue"><span style='white-space: nowrap'><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>af</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>f</span></font></i><font color="blue"><span style='white-space: nowrap'>.forward(0,&nbsp;</span></font><i><font color="black"><span style='white-space: nowrap'>x</span></font></i><font color="blue"><span style='white-space: nowrap'>)<br>
 </span></font></code>
 All the other forward mode coefficients are unspecified.
 
