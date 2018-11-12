@@ -2,7 +2,8 @@
 cppad\_py: A C++ Algorithmic Differentiation Object Library and Python Interface to Cppad
 
 # Previous History
-Fork from [original repository](https://github.com/bradbell/cppad_py) at 11/02/2018 with hash code `c3751bd1`.
+Started working on this fork on November 10, 2018 with the `a3985f1` commit to 
+[original repository](https://github.com/bradbell/cppad_py).
 
 
 # License
